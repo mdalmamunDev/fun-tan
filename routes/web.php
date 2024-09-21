@@ -20,4 +20,4 @@ Route::get('/admin/{any}', function () {
 
 Route::get('/{any}', function () {
     return view('frontend-single-app');
-});
+})->where('any', '.*');

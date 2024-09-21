@@ -3,7 +3,7 @@ import HomeComponent from "../components/HomeComponent";
 
 const route = [
     {
-        path : '/home',
+        path : '/',
         name : 'home',
         component : HomeComponent,
         meta : {'pageTitle' : 'Home'},

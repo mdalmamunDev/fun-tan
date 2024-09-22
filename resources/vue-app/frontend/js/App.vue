@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Hello from Vue 2 in Laravel 9 (Frontend)</h1>
         <router-view />
     </div>
 </template>

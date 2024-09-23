@@ -1207,7 +1207,7 @@ th{
 /*----------------------------------------------*/
 .card-concern{
   text-align: center;
-  bottom: 145px;
+  bottom: 0;
   display: flex;
   justify-content: center;
   cursor: pointer;
@@ -1224,7 +1224,7 @@ th{
   cursor: pointer;
 }
 .card:hover .card-concern{
-  bottom: 160px;
+  bottom: 40%;
   opacity: 1;
 }
 

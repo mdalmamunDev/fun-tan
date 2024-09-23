@@ -3,6 +3,8 @@ import App from './App.vue';
 import VueRouter from 'vue-router'
 import route from './routes';
 import commonMixin from "./mixins/commonMixin";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 Vue.use(VueRouter);

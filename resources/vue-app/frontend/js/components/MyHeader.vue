@@ -122,7 +122,7 @@
                                     <a class="nav-link me-4 active" href="index.html">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link me-4" href="index.html">About</a>
+                                    <router-link to="/movies" class="nav-link me-4">Movies</router-link>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link me-4" href="index.html">Shop</a>

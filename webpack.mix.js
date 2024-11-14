@@ -12,7 +12,12 @@ mix.js('resources/vue-app/backend/js/app.js', 'public/vue-app/backend/js')
     .vue()
     .sass('resources/vue-app/backend/css/app.scss', 'public/vue-app/backend/css');
 
-// Frontend Webpack configuration
+// Frontend Webpack configuration for JS
 mix.js('resources/vue-app/frontend/js/app.js', 'public/vue-app/frontend/js')
     .vue()
     .sass('resources/vue-app/frontend/css/app.scss', 'public/vue-app/frontend/css');
+
+// Separate Tailwind CSS compilation
+mix.postCss('resources/vue-app/utils/vendors/tailwind.css', 'public/vue-app/css', [
+    require('tailwindcss'),
+]);

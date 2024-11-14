@@ -1,0 +1,21 @@
+/* Ensure smooth transition of header */
+#header {
+    transition: transform 0.3s ease-in-out;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.reason-card {
+    background: linear-gradient(149deg, #27356b 0%, #3d192a 99.08%);
+}
+
+.reason-card:hover {
+    background: linear-gradient(149deg, #2a3972 0%, #4d2035 99.08%);
+}

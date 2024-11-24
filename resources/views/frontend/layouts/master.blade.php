@@ -18,6 +18,8 @@
 
 @include('frontend.layouts.footer')
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Tailwind Component -->
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="{{ asset('frontend/scripts/index.js') }}"></script>

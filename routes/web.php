@@ -25,6 +25,10 @@ Route::get('/item', function () {
     return view('frontend.item');
 });
 
+Route::get('/movies', function () {
+    return view('frontend.movies');
+});
+
 
 Route::get('/admin/{any}', function () {
     return view('index');

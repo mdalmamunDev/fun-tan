@@ -22,7 +22,7 @@
         <a href="#" class="hover:underline">Contact Us</a>
         <a href="#" class="hover:underline">Speed Test</a>
         <a href="#" class="hover:underline">Legal Notices</a>
-        <a href="#" class="hover:underline">Only on Netflix</a>
+        <a href="#" class="hover:underline">Only on FunTan</a>
     </div>
 
     <div class="mt-8">
@@ -33,6 +33,6 @@
     </div>
 
     <div class="mt-4 text-gray-500">
-        <p>Netflix Bangladesh</p>
+        <p>FunTan Bangladesh</p>
     </div>
 </footer>

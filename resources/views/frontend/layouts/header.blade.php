@@ -11,7 +11,7 @@
         </button>
         <!-- Navigation links (visible on larger screens, hidden on mobile) -->
         <nav class="hidden md:flex space-x-6">
-            <a href="index.html" class="hover:text-red-500">Home</a>
+            <a href="{{ url('/') }}" class="hover:text-red-500">Home</a>
             <a href="#" class="hover:text-red-500">TV Shows</a>
             <a href="movie.html" class="hover:text-red-500">Movies</a>
             <a href="#" class="hover:text-red-500">New & Popular</a>

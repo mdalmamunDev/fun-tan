@@ -12,7 +12,7 @@
         <!-- Navigation links (visible on larger screens, hidden on mobile) -->
         <nav class="hidden md:flex space-x-6">
             <a href="{{ url('/') }}" class="hover:text-red-500">Home</a>
-            <a href="#" class="hover:text-red-500">TV Shows</a>
+            <a href="{{ url('/tv-shows') }}" class="hover:text-red-500">TV Shows</a>
             <a href="{{ url('/movies') }}" class="hover:text-red-500">Movies</a>
             <a href="#" class="hover:text-red-500">New & Popular</a>
             <a href="#" class="hover:text-red-500">My List</a>

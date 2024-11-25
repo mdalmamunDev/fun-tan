@@ -25,10 +25,14 @@ Route::get('/item', function () {
     return view('frontend.item');
 });
 
-Route::get('/movies', function () {
-    return view('frontend.movies');
+Route::get('/tv-shows', function () {
+    return view('frontend.tv-shows');
 });
 
+
+Route::get('/items/{any}', function () {
+    return view('frontend.items-app');
+})->where('any', '.*');
 
 Route::get('/admin/{any}', function () {
     return view('index');

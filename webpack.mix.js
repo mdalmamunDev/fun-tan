@@ -13,9 +13,7 @@ mix.js('resources/vue-app/backend/js/app.js', 'public/vue-app/backend/js')
     .sass('resources/vue-app/backend/css/app.scss', 'public/vue-app/backend/css');
 
 // Frontend Webpack configuration for JS
-mix.js('resources/vue-app/frontend/js/app.js', 'public/vue-app/frontend/js')
-    .vue()
-    .sass('resources/vue-app/frontend/css/app.scss', 'public/vue-app/frontend/css');
+mix.js('resources/vue-app/frontend/items-app/items-app', 'public/vue-app/frontend/items-app/js').vue();
 
 // Separate Tailwind CSS compilation
 mix.postCss('resources/vue-app/utils/vendors/tailwind.css', 'public/vue-app/css', [

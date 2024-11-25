@@ -4,6 +4,8 @@ module.exports = {
     './resources/views/**/*.blade.php',
     './resources/js/**/*.vue',
     './resources/js/**/*.js',
+    './resources/vue-app/**/*.vue',
+    './resources/vue-app/**/*.js',
   ],
   theme: {
     extend: {},

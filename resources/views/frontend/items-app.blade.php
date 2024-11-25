@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 @section('content')
     <div id="items-app">
-        <items-app />
+        <ItemsApp></ItemsApp>
     </div>
 @endsection
 @section('script')

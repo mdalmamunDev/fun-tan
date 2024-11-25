@@ -30,9 +30,10 @@ Route::get('/tv-shows', function () {
 });
 
 
-Route::get('/items/{any}', function () {
+// items app
+Route::get('/items', function () {
     return view('frontend.items-app');
-})->where('any', '.*');
+});
 
 Route::get('/admin/{any}', function () {
     return view('index');

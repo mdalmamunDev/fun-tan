@@ -12,16 +12,27 @@
         <!-- Navigation links (visible on larger screens, hidden on mobile) -->
         <nav class="hidden md:flex space-x-6">
             <a href="{{ url('/') }}" class="hover:text-red-500">Home</a>
-            <a href="{{ url('/tv-shows') }}" class="hover:text-red-500">TV Shows</a>
-            <a href="{{ url('/movies') }}" class="hover:text-red-500">Movies</a>
-            <a href="#" class="hover:text-red-500">New & Popular</a>
-            <a href="#" class="hover:text-red-500">My List</a>
+            <a href="{{ url('items') }}?type=2" class="hover:text-red-500">TV Shows</a>
+            <a href="{{ url('items') }}?type=1" class="hover:text-red-500">Movies</a>
+            <a href="{{ url('items') }}?sort=5" class="hover:text-red-500">New & Popular</a>
+            <a href="{{ url('items') }}" class="hover:text-red-500">My List</a>
         </nav>
     </div>
     <!-- Profile and Search -->
     <div class="flex items-center space-x-4">
         <button class="bg-gray-700 px-3 py-1 rounded">Search</button>
-        <img src="https://via.placeholder.com/40" alt="User Profile" class="w-8 h-8 rounded-full">
+        <details class="dropdown">
+            <summary class="flex items-center cursor-pointer">
+                <img src="https://via.placeholder.com/40" alt="User Profile" class="w-8 h-8 rounded-full me-1">
+                Md. Al Mamun
+            </summary>
+            <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                <li><a>Profile</a></li>
+                <li><a>History</a></li>
+                <li><a>My List</a></li>
+                <li><a>Logout</a></li>
+            </ul>
+        </details>
     </div>
 </header>
 <!-- Mobile Menu (visible when toggled) -->

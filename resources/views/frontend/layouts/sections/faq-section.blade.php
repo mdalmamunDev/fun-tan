@@ -3,27 +3,27 @@
         $questions = [
             [
                 'name' => 'What is FunTan?',
-                'ans' => '<p>FunTan is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.</p><p class="mt-2">You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There\'s always something new to discover and new TV shows and movies are added every week!</p>',
+                'ans' => 'items',
             ],
             [
                 'name' => 'How much does FunTan cost?',
-                'ans' => '<p>FunTan has various subscription plans available. Please visit their website to see the latest pricing options.</p><p class="mt-2">You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There\'s always something new to discover and new TV shows and movies are added every week!</p>',
+                'ans' => 'items',
             ],
             [
                 'name' => 'Where can I watch?',
-                'ans' => '<p>You can watch FunTan on any internet-connected device that offers the FunTan app, including smart TVs, game consoles, streaming media players, smartphones, and tablets.</p><p class="mt-2">You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There\'s always something new to discover and new TV shows and movies are added every week!</p>',
+                'ans' => 'items',
             ],
             [
                 'name' => 'How do I cancel?',
-                'ans' => '<p>You can cancel your FunTan account anytime through your account settings.</p><p class="mt-2">You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There\'s always something new to discover and new TV shows and movies are added every week!</p>',
+                'ans' => 'items',
             ],
             [
                 'name' => 'What can I watch on FunTan?',
-                'ans' => '<p>FunTan has an extensive library of feature films, documentaries, TV shows, anime, award-winning FunTan originals, and more.</p><p class="mt-2">You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There\'s always something new to discover and new TV shows and movies are added every week!</p>',
+                'ans' => 'items',
             ],
             [
                 'name' => 'Is FunTan good for kids?',
-                'ans' => '<p>FunTan has a dedicated section for kids with parental controls to ensure age-appropriate content.</p><p class="mt-2">You can watch as much as you want, whenever you want without a single commercial – all for one low monthly price. There\'s always something new to discover and new TV shows and movies are added every week!</p>',
+                'ans' => 'items',
             ],
         ];
     @endphp

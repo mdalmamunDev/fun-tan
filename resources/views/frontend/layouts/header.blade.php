@@ -26,7 +26,7 @@
                 <img src="https://via.placeholder.com/40" alt="User Profile" class="w-8 h-8 rounded-full me-1">
                 Md. Al Mamun
             </summary>
-            <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <ul class="menu dropdown-content bg-gray-700 rounded-box z-[1] w-52 p-2 shadow">
                 <li><a>Profile</a></li>
                 <li><a>History</a></li>
                 <li><a>My List</a></li>
@@ -35,13 +35,14 @@
         </details>
     </div>
 </header>
+
 <!-- Mobile Menu (visible when toggled) -->
 <div id="mobileMenu" class="md:hidden hidden bg-gray-800 text-white">
     <nav class="flex flex-col items-start px-6 py-4 pt-20 space-y-4">
-        <a href="#" class="hover:text-red-500">Home</a>
-        <a href="#" class="hover:text-red-500">TV Shows</a>
-        <a href="#" class="hover:text-red-500">Movies</a>
-        <a href="#" class="hover:text-red-500">New & Popular</a>
-        <a href="#" class="hover:text-red-500">My List</a>
+        <a href="{{ url('/') }}" class="hover:text-red-500">Home</a>
+        <a href="{{ url('items') }}?type=2" class="hover:text-red-500">TV Shows</a>
+        <a href="{{ url('items') }}?type=1" class="hover:text-red-500">Movies</a>
+        <a href="{{ url('items') }}?sort=5" class="hover:text-red-500">New & Popular</a>
+        <a href="{{ url('items') }}" class="hover:text-red-500">My List</a>
     </nav>
 </div>

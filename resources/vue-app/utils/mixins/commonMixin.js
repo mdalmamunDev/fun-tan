@@ -35,10 +35,8 @@ export default {
         getFromObjArr(objArr, key, value) {
             return objArr.find(obj => obj[key] === value) || null;
         },
-        setPageTitle() {
-            if (this.$route.meta.pageTitle) {
-                document.title = this.appName + ' | ' + this.$route.meta.pageTitle;
-            }
+        setPageTitle({suffix}) {
+            document.title = this.appName + ' | ' + suffix ?? this.$route.meta.pageTitle;
         },
         generateUrl(customUrl = false, suffix = false) {
             let url = window.baseUrl;
@@ -54,11 +52,73 @@ export default {
             return url;
         },
 
-        objLen(obj) {
-            if (typeof obj === 'object')
-                return Object.keys(obj).length;
-            return null;
+        dd(data) {
+            console.log(data);
         },
+        isEmptyData(data) {
+            if (data == null || data === '') return true;
+            if (typeof data === 'string' || Array.isArray(data)) return data.length === 0;
+            if (typeof data === 'object') return Object.keys(data).length === 0;
+            return false;
+        },
+        objLen(obj) {
+            if (!obj || obj !== 'object') return 0;
+
+            return Object.keys(obj).length;
+        },
+        asset(path) {
+            return baseUrl + '/' + path;
+        },
+        generateFileUrl(file, type = this.TYPE_COURSE) {
+            let def = this.DEF_FILES[type];
+
+            if (file && file.path)
+                def = 'storage/' + file.path;
+
+            return this.baseUrl + '/' + def;
+        },
+        limitText(text, maxLength = 70) {
+            if (text && text.length > maxLength) {
+                return text.substring(0, maxLength) + '...';
+            }
+            return text;
+        },
+
+        removeArrItem(array, item) {
+            if (!Array.isArray(array) || !item) return;
+
+            const index = array.indexOf(item);
+            array.splice(index , 1)
+        },
+
+        removeObjArrItem(objArr, obj, key = 'id') {
+            if (!Array.isArray(objArr) || !obj || !obj[key]) return;
+
+            const index = objArr.findIndex(item => item[key] === obj[key]);
+            if (index !== -1) objArr.splice(index, 1);
+        },
+        formatDecimal(value) {
+            if (value % 1 === 0) return parseInt(value);
+            return parseFloat(value).toFixed(2);
+        },
+        formatSecondsToTime(seconds) {
+            if (seconds === null || seconds === undefined) return 'NA';
+
+            const hours = Math.floor(seconds / 3600);            // Calculate hours
+            const minutes = Math.floor((seconds % 3600) / 60);   // Calculate minutes
+            const remainingSeconds = seconds % 60;                // Calculate remaining seconds
+
+            // Build the time string conditionally
+            let formattedTime = [];
+
+            if (hours > 0) formattedTime.push(String(hours));  // Include hours only if greater than 0
+            formattedTime.push(String(minutes).padStart(2, '0'));  // Always include minutes
+            formattedTime.push(String(remainingSeconds).padStart(2, '0')); // Always include seconds
+
+            return formattedTime.join(':'); // Join components with a colon
+        },
+
+
 
 
         // auth

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from './App.vue';
+import ItemsApp from './ItemsApp.vue';
 import VueRouter from 'vue-router'
 import route from './routes';
 import commonMixin from "./mixins/commonMixin";
@@ -17,7 +17,7 @@ const router = new VueRouter({
 Vue.mixin(commonMixin);
 
 new Vue({
-    el: '#app',
+    el: '#items-app',
     router,
-    render: h => h(App)
+    render: h => h(ItemsApp)
 });

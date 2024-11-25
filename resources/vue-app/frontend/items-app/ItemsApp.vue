@@ -10,8 +10,8 @@
 import MyHeader from "./components/MyHeader";
 import MyFooter from "./components/MyFooter";
 export default {
-    name: 'App',
-    components: {MyFooter, MyHeader}
+    name: 'ItemsApp',
+    components: {MyFooter, MyHeader},
 };
 </script>
 

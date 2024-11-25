@@ -4,22 +4,22 @@ import Movies from "../views/MoviesComponent";
 
 const route = [
     {
-        path : '/',
+        path : '/items/',
         name : 'home',
         component : Home,
         meta : {'pageTitle' : 'Home'},
     },
     {
-        path : '/movies',
+        path : '/items/movies',
         name : 'movies',
         component : Movies,
-        meta : {'pageTitle' : 'Home'},
+        meta : {'pageTitle' : 'movies'},
     },
     {
-        path : '/tv-series',
-        name : 'home',
+        path : '/items/tv-series',
+        name : 'tvSeries',
         component : Home,
-        meta : {'pageTitle' : 'Home'},
+        meta : {'pageTitle' : 'tv-series'},
     },
 ];
 export default route;

@@ -16,28 +16,31 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::get('/admin', function () {
+    return view('login');
+});
+
+
+
+
 Route::get('/', function () {
     return view('frontend.index');
 });
 
-
 Route::get('/item', function () {
     return view('frontend.item');
 });
-
-Route::get('/tv-shows', function () {
-    return view('frontend.tv-shows');
-});
-
 
 // items app
 Route::get('/items', function () {
     return view('frontend.items-app');
 });
 
+
+
 Route::get('/admin/{any}', function () {
     return view('index');
-});
+})->where('any', '.*');
 
 
 //Route::get('/{any}', function () {

@@ -8,7 +8,7 @@ mix.alias({
 });
 
 // Backend Webpack configuration
-mix.js('resources/vue-app/backend/js/app.js', 'public/vue-app/backend/js')
+mix.js('resources/vue-app/backend/app.js', 'public/vue-app/backend/js')
     .vue()
     .sass('resources/vue-app/backend/css/app.scss', 'public/vue-app/backend/css');
 

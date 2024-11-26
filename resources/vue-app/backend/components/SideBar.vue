@@ -19,13 +19,20 @@
             </form>
             <ul class="space-y-2">
                 <li>
-                    <a href="#"
-                       class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <router-link to="/admin/dashboard" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <div class="text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
                             <i class="fa-solid fa-chart-simple"></i>
                         </div>
                         <span class="ml-2">Dashboard</span>
-                    </a>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/admin/items" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <div class="text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <span class="ml-2">Items</span>
+                    </router-link>
                 </li>
                 <li>
                     <button type="button" class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"

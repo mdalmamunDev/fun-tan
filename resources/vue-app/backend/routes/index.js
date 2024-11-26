@@ -1,16 +1,23 @@
-import DashboardComponent from "../components/DashboardComponent";
+import DashboardView from "../views/DashboardView";
+import ItemsView from "../views/ItemsView";
 
 
 const route = [
     {
         path : '/admin/dashboard',
         name : 'dashboard',
-        component : DashboardComponent,
+        component : DashboardView,
         meta : {'pageTitle' : 'Dashboard'},
     },
     {
+        path : '/admin/items',
+        name : 'items',
+        component : ItemsView,
+        meta : {'pageTitle' : 'Items'},
+    },
+    {
         path : '/admin/',
-        component : DashboardComponent,
+        component : DashboardView,
         meta : {'pageTitle' : 'Dashboard'},
     }
 ];

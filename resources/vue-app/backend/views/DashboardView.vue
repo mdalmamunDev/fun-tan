@@ -21,10 +21,10 @@
 </template>
 
 <script>
-    import UsersChart from "./UsersChart";
-    import ItemsChart from "./ItemsChart";
+    import UsersChart from "../components/UsersChart";
+    import ItemsChart from "../components/ItemsChart";
     export default {
-        name: "DashboardComponent",
+        name: "DashboardView",
         components: {ItemsChart, UsersChart},
     }
 </script>

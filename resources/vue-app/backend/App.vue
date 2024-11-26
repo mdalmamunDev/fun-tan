@@ -3,8 +3,10 @@
         <my-header />
         <side-bar />
         <main class="md:ml-64">
-            <div class="m-4 mt-20 h-auto">
-                <router-view />
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="m-4 mt-20 h-auto min-h-[75vh]">
+                    <router-view />
+                </div>
             </div>
 
             <my-footer />

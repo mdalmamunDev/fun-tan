@@ -17,17 +17,17 @@
         <div class="grid lg:grid-cols-2 2xl:grid-cols-3 gap-x-4 gap-2">
             <div v-for="i in 10" class="bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full flex">
                 <!-- Image Section with Duration Overlay -->
-                <div class="relative w-36 h-32">
+                <div class="relative w-36 h-28">
                     <img src="https://via.placeholder.com/150x150" alt="Movie Title 1" class="w-full h-full object-cover">
                     <!-- Duration Overlay -->
                     <div class="absolute bottom-1 right-1 bg-black bg-opacity-50 text-white text-xs px-1 py-0.5 rounded">
-                        <i class="fa-solid fa-clock mr-px text-red-600"></i> 2h 15m
+                        2:15:05
                     </div>
                 </div>
 
                 <!-- Movie Details Section -->
-                <div class="p-3">
-                    <h3 class="font-semibold text-white">Movie Title It's A Little Movie Title It's A Little Bigger Title</h3>
+                <div class="p-2 px-3 my-auto">
+                    <h4 class="font-semibold">Movie Title It's A Little Movie Title It's A Little Bigger Title</h4>
 
                     <!-- Additional Movie Info (Views, Rating, Genre, Industry) -->
                     <div class="mt-2 text-gray-400 text-xs grid grid-cols-2 gap-1">

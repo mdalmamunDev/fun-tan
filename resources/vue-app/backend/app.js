@@ -5,6 +5,7 @@ import route from './routes';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'flowbite'; //tailwind js
 import commonMixin from "../utils/mixins/commonMixin";
+import httpMixin from "../utils/mixins/httpMixin";
 
 
 Vue.use(VueRouter);
@@ -16,6 +17,7 @@ const router = new VueRouter({
 
 
 Vue.mixin(commonMixin);
+Vue.mixin(httpMixin);
 
 new Vue({
     el: '#app',

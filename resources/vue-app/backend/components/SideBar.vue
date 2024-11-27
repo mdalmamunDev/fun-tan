@@ -29,9 +29,33 @@
                 <li>
                     <router-link to="/admin/items" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <div class="text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
-                            <i class="fa-solid fa-film"></i>
+                            <i class="fa-solid fa-play"></i>
                         </div>
                         <span class="ml-2">Items</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/admin/industries" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <div class="text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
+                            <i class="fa-solid fa-industry"></i>
+                        </div>
+                        <span class="ml-2">Industries</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/admin/genres" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <div class="text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <span class="ml-2">Genres</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/admin/industries" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <div class="text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                        <span class="ml-2">Tags</span>
                     </router-link>
                 </li>
                 <li>

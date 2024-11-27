@@ -1,5 +1,6 @@
 import DashboardView from "../views/DashboardView";
 import ItemsView from "../views/ItemsView";
+import IndustriesView from "../views/IndustriesView";
 
 
 const route = [
@@ -16,9 +17,19 @@ const route = [
         meta : {'pageTitle' : 'Items'},
     },
     {
-        path : '/admin/',
-        component : DashboardView,
-        meta : {'pageTitle' : 'Dashboard'},
-    }
+        path : '/admin/industries',
+        component : IndustriesView,
+        meta : {'pageTitle' : 'Industries'},
+    },
+    {
+        path : '/admin/genres',
+        component : IndustriesView,
+        meta : {'pageTitle' : 'Genres'},
+    },
+    {
+        path : '/admin/tags',
+        component : IndustriesView,
+        meta : {'pageTitle' : 'Tags'},
+    },
 ];
 export default route;

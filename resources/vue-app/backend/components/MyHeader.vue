@@ -13,9 +13,9 @@
                 </svg>
                 <span class="sr-only">Toggle sidebar</span>
             </button>
-            <a href="#" class="flex items-center justify-between mr-4">
-                <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="mr-3 h-8" alt="Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">FanTan</span>
+            <a :href="baseUrl" class="flex items-center justify-between mr-4" title="Go On Site">
+                <img :src="asset('logo.png')" class="mr-3 h-8" alt="Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap hover:text-red-600 duration-300">FanTan</span>
             </a>
             <form action="#" method="GET" class="hidden md:block md:pl-2">
                 <label for="topbar-search" class="sr-only">Search</label>

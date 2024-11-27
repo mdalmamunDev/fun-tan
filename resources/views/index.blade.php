@@ -13,6 +13,9 @@
         </div>
 
         <!-- vue app -->
+        <script>
+            window.baseUrl = "{{url('/')}}";
+        </script>
         <script src="{{asset('vue-app/backend/js/app.js')}}"></script>
     </body>
 </html>

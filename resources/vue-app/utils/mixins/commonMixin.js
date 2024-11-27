@@ -143,19 +143,19 @@ export default {
         // UI
         showStatus({val, dangerVal = 0, successVal = 1, warningVal=2, dangerText='In Active', successText = 'Active', warningText='Pending'}) {
             if (val === successVal)
-                return `<button class="bg-gradient-to-br from-red-600 to-yellow-800 group-hover:from-red-600 group-hover:to-yellow-800 relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-lg group hover:text-white\`">
+                return `<button class="bg-gradient-to-br from-red-600 to-yellow-800 group-hover:from-red-600 group-hover:to-yellow-800 relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-lg group hover:text-white\`" title="Status">
                             <span class="text-red-600 hover:text-white relative px-1 py-0.5 transition-all ease-in duration-75 bg-white dark:bg-gray-800 rounded-md group-hover:bg-opacity-0">
                                 ${successText}
                             </span>
                         </button>`;
             if (val === dangerVal)
-                return `<button class="bg-gradient-to-br from-gray-700 to-yellow-800 group-hover:from-gray-700 group-hover:to-yellow-800 relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-lg group hover:text-white\`">
+                return `<button class="bg-gradient-to-br from-gray-700 to-yellow-800 group-hover:from-gray-700 group-hover:to-yellow-800 relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-lg group hover:text-white\`" title="Status">
                             <span class="text-gray-400 hover:text-white relative px-1 py-0.5 transition-all ease-in duration-75 bg-white dark:bg-gray-800 rounded-md group-hover:bg-opacity-0">
                                 ${dangerText}
                             </span>
                         </button>`;
             if (val === warningVal)
-                return `<button class="bg-gradient-to-br from-yellow-600 to-red-900 group-hover:from-yellow-600 group-hover:to-red-900 relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-lg group hover:text-white\`">
+                return `<button class="bg-gradient-to-br from-yellow-600 to-red-900 group-hover:from-yellow-600 group-hover:to-red-900 relative inline-flex items-center justify-center p-0.5 overflow-hidden rounded-lg group hover:text-white\`" title="Status">
                             <span class="text-yellow-500 hover:text-white relative px-1 py-0.5 transition-all ease-in duration-75 bg-white dark:bg-gray-800 rounded-md group-hover:bg-opacity-0">
                                 ${warningText}
                             </span>

@@ -19,26 +19,42 @@
                 <!-- Image Section with Duration Overlay -->
                 <div class="relative w-36 h-28">
                     <img src="https://via.placeholder.com/150x150" alt="Movie Title 1" class="w-full h-full object-cover">
-                    <!-- Duration Overlay -->
-                    <div class="absolute bottom-1 right-1 bg-black bg-opacity-50 text-white text-xs px-1 py-0.5 rounded">
-                        2:15:05
+                    <!-- Overlays -->
+                    <div class="absolute top-1 right-1 bg-black bg-opacity-50 text-white text-xs px-1 py-0.5 rounded flex items-center space-x-1">
+                        Tag
+                    </div>
+                    <div class="absolute bottom-1 right-1 bg-black bg-opacity-50 text-white text-xs px-1 py-0.5 rounded flex items-center space-x-1">
+                        <span>33.5M</span>
+                        <div class="w-1 h-1 bg-white rounded-full"></div>
+                        <span>2:15:05</span>
                     </div>
                 </div>
 
                 <!-- Movie Details Section -->
-                <div class="p-2 px-3 my-auto">
+                <div class="p-2 px-3 my-auto w-full">
                     <h4 class="font-semibold">Movie Title It's A Little Movie Title It's A Little Bigger Title</h4>
 
-                    <!-- Additional Movie Info (Views, Rating, Genre, Industry) -->
-                    <div class="mt-2 text-gray-400 text-xs grid grid-cols-2 gap-1">
-                        <!-- Views Icon -->
-                        <span><i class="fa-solid fa-eye mr-px text-red-600"></i> 1.5M</span>
-                        <!-- Rating Icon -->
-                        <span><i class="fa-solid fa-star mr-px text-red-600"></i> 8.7</span>
-                        <!-- Genre Icon -->
-                        <span><i class="fa-solid fa-film mr-px text-red-600"></i> Action, Adventure</span>
-                        <!-- Industry Icon -->
-                        <span><i class="fa-solid fa-industry mr-px text-red-600"></i> Hollywood</span>
+                    <div class="mt-2 flex text-xs">
+                        <!-- Additional Movie Info (Views, Rating, Genre, Industry) -->
+                        <div class="w-3/4 text-gray-400 grid grid-cols-2 gap-1">
+                            <!-- Views Icon -->
+                            <span><i class="fa-solid fa-eye mr-px text-red-600"></i> 1.5M</span>
+                            <!-- Rating Icon -->
+                            <span><i class="fa-solid fa-star mr-px text-red-600"></i> 8.7</span>
+                            <!-- Genre Icon -->
+                            <span><i class="fa-solid fa-film mr-px text-red-600"></i> Action, Adventure</span>
+                            <!-- Industry Icon -->
+                            <span><i class="fa-solid fa-industry mr-px text-red-600"></i> Hollywood</span>
+                        </div>
+                        <div class="w-1/4 flex flex-col items-end">
+                            <div class="w-max text-center">
+                                <div v-html="showStatus({val: 1})"></div>
+                                <div class="mt-1">
+                                    <i class="fa-solid fa-pen-to-square text-yellow-600 cursor-pointer" title="Edit"></i>
+                                    <i class="fa-solid fa-trash text-red-600 cursor-pointer ml-3" title="Drop"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-Route::get('/admin', function () {
-    return view('login');
+Route::middleware('guest')->group(function () {
+    Route::get('/admin', function () {
+        return view('login');
+    });
+    Route::post('/admin', [AuthController::class, 'doLogin']);
 });
 
 

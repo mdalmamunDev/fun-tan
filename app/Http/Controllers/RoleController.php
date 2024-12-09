@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
-use App\Supports\BaseCrudHelper;
+use App\Supports\Helper;
 
 class RoleController extends Controller
 {
-    use BaseCrudHelper;
+    use Helper;
 
     public function __construct()
     {

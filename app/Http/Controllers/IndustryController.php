@@ -24,10 +24,13 @@ class IndustryController extends Controller
             return $this->retNoPermRes(PERM_VIEW);
 
         try {
-            $perPage = request()->input('per_page');
-            $data = $this->model->get();
+            $name = request()->input('name');
+            $data = $this->model->with('division')
+                ->when($name, function ($query) use ($name) {
+                    $query->where('name', 'Like', "%$name%");
+                })->paginate(request()->input('perPage'));
 
-            return retRes('Successfully fetched all records', $data);
+            return retRes(2000, $data);
         } catch (Exception $e) {
             return retRes('Failed to fetch records', null, 500);
         }
@@ -42,8 +45,6 @@ class IndustryController extends Controller
         try {
             $record = $this->model->findOrFail($id);
             return retRes('Successfully found record', $record);
-        } catch (ModelNotFoundException $e) {
-            return retRes('Record not found', null, CODE_NOT_FOUND);
         } catch (Exception $e) {
             return retRes('Something went wrong with fetching the record', null, 500);
         }

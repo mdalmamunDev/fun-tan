@@ -106,6 +106,10 @@
     export default {
         name: "IndustriesView",
         components: {PageTop},
+
+        mounted() {
+            console.log(this.$store.getters.formData);
+        }
     }
 </script>
 

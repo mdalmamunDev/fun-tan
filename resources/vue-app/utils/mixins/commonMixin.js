@@ -24,9 +24,9 @@ export default {
         // dataList() {
         //     return this.getDataList();
         // },
-        // formData() {
-        //     return this.getFormData();
-        // },
+        formData() {
+            return this.$store.getters.formData;
+        },
         // Config() {
         //     return this.getConfig()
         // }
@@ -121,10 +121,6 @@ export default {
         },
         setDataList(data) {
             this.$store.commit('setDataList', data);
-        },
-
-        getFormData() {
-            return this.$store.getters.formData;
         },
         setFormData(data) {
             this.$store.commit('setFormData', data);

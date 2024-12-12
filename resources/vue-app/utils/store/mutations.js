@@ -21,5 +21,8 @@ export const mutations = {
     },
     setShowFooter(state, data) {
         state.showFooter = data;
+    },
+    setShowModal(state, data) {
+        state.showModal = data;
     }
 };

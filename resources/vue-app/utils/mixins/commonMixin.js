@@ -27,11 +27,23 @@ export default {
         formData() {
             return this.$store.getters.formData;
         },
+        showModal() {
+            return this.$store.getters.showModal;
+        },
         // Config() {
         //     return this.getConfig()
         // }
     },
     methods: {
+        openModal() {
+            this.$store.commit('setShowModal', true);
+        },
+        closeModal() {
+            this.$store.commit('setShowModal', false);
+        },
+        modalInput({name = 'name', type = 'text', required = false, colSpan = 2} = {}) {
+            return {name, type, required, colSpan};
+        },
         getFromObjArr(objArr, key, value) {
             return objArr.find(obj => obj[key] === value) || null;
         },

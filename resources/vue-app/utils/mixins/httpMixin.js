@@ -59,6 +59,12 @@ export default {
             });
         },
 
+        submitForm() {
+            console.log(this.formData);
+            this.closeModal();
+        },
+
+
         /**
          * Sends an HTTP request using Axios with customizable parameters.
          * Supports various HTTP methods (GET, POST, PUT, DELETE) and allows for dynamic URL generation.

@@ -20,4 +20,7 @@ export const getters = {
     showFooter(state) {
         return state.showFooter;
     },
+    showModal(state) {
+        return state.showModal;
+    },
 };

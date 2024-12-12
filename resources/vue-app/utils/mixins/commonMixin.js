@@ -41,8 +41,8 @@ export default {
         closeModal() {
             this.$store.commit('setShowModal', false);
         },
-        modalInput({name = 'name', type = 'text', required = false, colSpan = 2} = {}) {
-            return {name, type, required, colSpan};
+        modalInput({name = 'name', type = 'text', required = false, defaultValue = '', options = [], placeholder = '', colSpan = 2} = {}) {
+            return {name, type, required, defaultValue, options, placeholder, colSpan};
         },
         getFromObjArr(objArr, key, value) {
             return objArr.find(obj => obj[key] === value) || null;

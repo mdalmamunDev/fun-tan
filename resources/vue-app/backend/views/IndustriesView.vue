@@ -61,13 +61,23 @@
         data() {
             return {
                 modalInputs: [
-                    this.modalInput({name: 'name', type: 'text', required: true}),
+                    this.modalInput({name: 'name', type: 'text', required: true, placeholder: 'Industry name'}),
+                    this.modalInput({
+                        name: 'status',
+                        type: 'select',
+                        required: true,
+                        defaultValue: 1,
+                        options : [
+                            {name: 'In Active', value: 0},
+                            {name: 'Active', value: 1},
+                        ]
+                    }),
                 ],
             };
         },
 
         mounted() {
-            this.formData.status = 1;
+            //
         }
     }
 </script>

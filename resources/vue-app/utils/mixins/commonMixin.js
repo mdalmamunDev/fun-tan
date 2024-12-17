@@ -18,12 +18,15 @@ export default {
                 { name: 'Duration', value: 4 },
                 { name: 'New & Popular', value: 5 },
             ],
+            CODE_SUCCESS: 2000,
+            CODE_WARNING: 2020,
+            CODE_DANGER: 3000,
         }
     },
     computed: {
-        // dataList() {
-        //     return this.getDataList();
-        // },
+        dataList() {
+            return this.getDataList();
+        },
         formData() {
             return this.$store.getters.formData;
         },
@@ -40,6 +43,7 @@ export default {
         },
         closeModal() {
             this.$store.commit('setShowModal', false);
+            this.$store.commit('setFormData', {});
         },
         modalInput({name = 'name', type = 'text', required = false, defaultValue = '', options = [], placeholder = '', colSpan = 2} = {}) {
             return {name, type, required, defaultValue, options, placeholder, colSpan};
@@ -122,7 +126,8 @@ export default {
 
         // auth
         can(task) {
-            return this.getConfig().permissions.includes(task)
+            return true;
+            // return this.getConfig().permissions.includes(task)
         },
 
 

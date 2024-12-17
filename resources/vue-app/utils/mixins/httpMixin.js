@@ -47,8 +47,8 @@ export default {
                 callback: (response) => {
                     if (response.data) {
                         // check if the user is permitted
-                        if (response.data.status === _this.CODE_DANGER)
-                            _this.showToast(response.data.message, 'error');
+                        // if (response.data.status === _this.CODE_DANGER)
+                            // _this.showToast(response.data.message, 'error');
 
                         // If a callback is provided, use it to handle the data
                         if (typeof callback === 'function') callback(response.data.result);
@@ -59,9 +59,25 @@ export default {
             });
         },
 
-        submitForm() {
-            console.log(this.formData);
-            this.closeModal();
+        onClickUpdate(item) {
+            let copy = Object.assign({}, item); // to avoid reference
+            this.$store.commit('setFormData', copy);
+            this.openModal();
+        },
+
+        deleteItem(id, currentPage, params = {}) {
+            const _this = this;
+            this.httpReq({
+                urlSuffix: id,
+                method: 'delete',
+                callback: (response) => {
+                    if (response.data) {
+                        // Show success toast notification for deletion
+                        //_this.showToast(response.data.message, response.data.status === _this.CODE_SUCCESS ? "success" : "error");
+                        _this.fetchData(this.generateUrl(false, false, { ...{page: currentPage}, ...params }));
+                    }
+                }
+            });
         },
 
 

@@ -25,14 +25,14 @@ class IndustryController extends Controller
 
         try {
             $name = request()->input('name');
-            $data = $this->model->with('division')
+            $data = $this->model
                 ->when($name, function ($query) use ($name) {
                     $query->where('name', 'Like', "%$name%");
-                })->paginate(request()->input('perPage'));
+                })->paginate(15);
 
             return retRes(2000, $data);
         } catch (Exception $e) {
-            return retRes('Failed to fetch records', null, 500);
+            return retRes('Failed to fetch records', $e->getMessage(), 500);
         }
     }
 

@@ -19,7 +19,7 @@ const route = [
     {
         path : '/admin/industries',
         component : IndustriesView,
-        meta : {'pageTitle' : 'Industries'},
+        meta : {'pageTitle' : 'Industries', dataUrl: 'api/industries'},
     },
     {
         path : '/admin/genres',

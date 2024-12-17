@@ -16,7 +16,7 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form class="p-4 md:p-5" @submit.prevent="submitForm">
+                <form class="p-4 md:p-5" @submit.prevent="handleSubmit">
                     <div :class="`grid gap-4 mb-8 grid-cols-2`">
                         <div v-for="field in inputFields" :class="`col-span-${field.colSpan}`">
                             <label :for="field.name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">{{ field.name }}</label>
@@ -71,6 +71,7 @@
                 type: Array,
                 default: [],
             },
+            currentPage: Number,
         },
 
         mounted() {
@@ -80,7 +81,29 @@
                     this.formData[field.name] = field.defaultValue;
                 }
             }
-        }
+        },
+
+        methods: {
+            handleSubmit() {
+                let urlSuffix = this.formData.id ?? false;
+                let method = this.formData.id ? 'put' : 'post';
+
+                const _this = this;
+                this.httpReq({
+                    urlSuffix: urlSuffix,
+                    method: method,
+                    callback: (response) => {
+                        if (response.data) {
+                            // Show success toast notification instead of alert
+                            // _this.showToast(response.data.message, response.data.status === _this.CODE_SUCCESS ? 'success' : 'error');
+                            _this.fetchData(this.generateUrl(false, false, {page: _this.currentPage}));
+                        }
+                    }
+                });
+
+                this.closeModal();
+            },
+        },
     }
 </script>
 

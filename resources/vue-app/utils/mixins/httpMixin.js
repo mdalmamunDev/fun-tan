@@ -1,4 +1,5 @@
 import Axios from "axios";
+import Swal from 'sweetalert2';
 
 export default {
     methods: {
@@ -67,18 +68,34 @@ export default {
 
         deleteItem(id, currentPage, params = {}) {
             const _this = this;
-            this.httpReq({
-                urlSuffix: id,
-                method: 'delete',
-                callback: (response) => {
-                    if (response.data) {
-                        // Show success toast notification for deletion
-                        //_this.showToast(response.data.message, response.data.status === _this.CODE_SUCCESS ? "success" : "error");
-                        _this.fetchData(this.generateUrl(false, false, { ...{page: currentPage}, ...params }));
-                    }
-                }
+
+            // Display confirmation dialog using SweetAlert2
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you really want to delete this item? This action cannot be undone.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (!result.isConfirmed) return;
+
+                // User confirmed deletion
+                _this.httpReq({
+                    urlSuffix: id,
+                    method: 'delete',
+                    callback: (response) => {
+                        if (response.data) {
+                            // Show success toast notification
+                            this.$toast(response.data.message, {type: 'success',});
+                            // Refetch the updated data
+                            _this.fetchData(_this.generateUrl(false, false, { ...{ page: currentPage }, ...params }));
+                        }
+                    },
+                });
             });
         },
+
 
 
         /**

@@ -1,6 +1,7 @@
 import DashboardView from "../views/DashboardView";
 import ItemsView from "../views/ItemsView";
 import IndustriesView from "../views/IndustriesView";
+import GenresView from "../views/GenresView";
 
 
 const route = [
@@ -23,7 +24,7 @@ const route = [
     },
     {
         path : '/admin/genres',
-        component : IndustriesView,
+        component : GenresView,
         meta : {'pageTitle' : 'Genres'},
     },
     {

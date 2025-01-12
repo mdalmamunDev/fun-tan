@@ -24,3 +24,4 @@ Route::resource('tests', IndustryController::class);
 
 
 Route::resource('industries', IndustryController::class);
+Route::resource('genres', IndustryController::class);

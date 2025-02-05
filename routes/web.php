@@ -19,9 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::get('/admin', function () {
         return view('login');
-    });
+    })->name('login');
+
+    Route::get('/login', function () {
+        return view('login');
+    })->name('login');
     Route::post('/admin', [AuthController::class, 'doLogin']);
+
+    Route::get('/admin/register', function () {
+        return view('register');
+    });
+    Route::post('/admin/register', [AuthController::class, 'doRegister']);
 });
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
@@ -41,7 +51,7 @@ Route::get('/items', function () {
 
 
 
-Route::get('/admin/{any}', function () {
+Route::middleware(['auth'])->get('/admin/{any}', function () {
     return view('index');
 })->where('any', '.*');
 

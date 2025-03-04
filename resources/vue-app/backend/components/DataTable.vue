@@ -3,17 +3,11 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    Name
-                    <i class="fa-solid fa-sort ml-1"></i>
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Items
-                    <i class="fa-solid fa-sort ml-1"></i>
-                </th>
-                <th scope="col" class="px-6 py-3 text-center">
-                    Status
-                    <i class="fa-solid fa-sort ml-1"></i>
+                <th v-for="h in headers" :class="h.cls" scope="col">
+                    <span @click="h.changeSort(h.name)" :class="h.sortable ? ' cursor-pointer hover:text-gray-100 transition-colors duration-300': ''">
+                        {{ h.name }}
+                        <i v-if="h.sortable" class="fa-solid fa-sort ml-1"></i>
+                    </span>
                 </th>
                 <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Action</span>
@@ -24,15 +18,17 @@
                 <slot/>
             </tbody>
         </table>
+        <pagination v-if="dataList.current_page && dataList.last_page > 1" :current-page="dataList.current_page" :last-page="dataList.last_page"></pagination>
     </div>
 </template>
 
 <script>
+    import Pagination from "./Pagination";
     export default {
         name: "DataTable",
-
+        components: {Pagination},
         props: {
-            headings: {
+            headers: {
                 type: Array, // Can be either an array or object
                 default: () => { return []}
             },
@@ -41,6 +37,9 @@
             //     default: () => ({ }),
             // },
         },
+        methods: {
+            //
+        }
     }
 </script>
 

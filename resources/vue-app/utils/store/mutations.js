@@ -10,6 +10,9 @@ export const mutations = {
     setFormData(state, data) {
         state.formData = data;
     },
+    setFilterData(state, data) {
+        state.filterData = data;
+    },
     setConfig(state, data) {
         state.Config = data;
     },

@@ -8,7 +8,7 @@ export default {
          * If a `customUrl` is passed, it will append it to the base URL; otherwise, it will use the `dataUrl` from the current route.
          * A `suffix` can also be appended to the generated URL.
          */
-        generateUrl(customUrl = false, suffix = false, params = {}) {
+        generateUrl(customUrl = false, suffix = false) {
             let url = baseUrl;
 
             if (customUrl)
@@ -19,14 +19,14 @@ export default {
             if (suffix)
                 url += '/' + suffix;
 
-            if (Object.keys(params).length > 0) {
-                // Add query parameters
-                const queryParams = Object.entries(params)
-                    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-                    .join('&');
-
-                url += `?${queryParams}`;
-            }
+            // if (Object.keys(params).length > 0) {
+            //     // Add query parameters
+            //     const queryParams = Object.entries(params)
+            //         .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+            //         .join('&');
+            //
+            //     url += `?${queryParams}`;
+            // }
 
             return url;
         },
@@ -36,28 +36,38 @@ export default {
          * If a callback is provided, it will handle the response.
          * Otherwise, the fetched data is used to update the local data list.
          */
-        fetchData(url = false, callback = false) {
-            if (!callback && this) {
+        fetchData({url = false, callback = false, params = {page: 1}, filter = this.filterData} = {}) {
+            if (!callback) {
                 // reset data to empty
                 this.$store.commit('setDataList', {});
             }
 
+
+            // merge filter in params
+            params = { ...params, ...filter };
+
             const _this = this;
-            this.httpReq({
-                url,
-                callback: (response) => {
+            Axios({
+                method: 'get',  // HTTP method (GET, POST, etc.)
+                url: url ? url : _this.generateUrl(),  // Generate the full URL
+                params,
+            })
+                .then(function (response) {
                     if (response.data) {
                         // check if the user is permitted
                         // if (response.data.status === _this.CODE_DANGER)
-                            // _this.showToast(response.data.message, 'error');
+                        // _this.showToast(response.data.message, 'error');
 
                         // If a callback is provided, use it to handle the data
                         if (typeof callback === 'function') callback(response.data.result);
                         // Otherwise, update the local data list with the fetched data
                         else _this.$store.commit('setDataList', response.data.result);
                     }
-                }
-            });
+                })
+                .catch(function (error) {
+                    // Handle the error here, for example by showing a toast notification
+                    // toastr.error(error.message, 'Error!', {positionClass: 'toast-top-center'});
+                });
         },
 
         onClickUpdate(item) {
@@ -123,29 +133,11 @@ export default {
         },
 
 
-
-        // add or remove quiz from item
-        manipulateQuiz(quizzes, item, data, type) {
-            const _this = this;
-            this.httpReq({
-                customUrl: 'api/quizzes/add-quiz',
-                urlSuffix: type,
-                method: 'post',
-                data,
-                callback: (response) => {
-                    let { result } = response.data;
-                    if (result) {
-                        if (result.flag === 1) { // Item added
-                            item.quizzes.push(result.quiz);
-                            _this.removeObjArrItem(quizzes, result.quiz);
-                        }
-                        else if (result.flag === 0) { // Item removed
-                            _this.removeObjArrItem(item.quizzes, result.quiz);
-                            quizzes.push(result.quiz);
-                        }
-                    }
-                }
-            });
+        // change the sort type
+        changeSort(sortBy) {
+            this.filterData.sort_order = this.filterData.sort_by === sortBy && this.filterData.sort_order === 'ASC' ? 'DESC' : 'ASC';
+            this.filterData.sort_by = sortBy;
+            this.fetchData();
         },
     }
 }

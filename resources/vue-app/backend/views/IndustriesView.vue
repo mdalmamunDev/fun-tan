@@ -2,7 +2,7 @@
     <div>
         <page-top :show-add-btn="can('industry_add')" />
 
-        <data-table>
+        <data-table :headers="tableHeaders">
             <tr v-for="(item, index) in dataList.data" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ item.name }}</th>
                 <td class="px-6 py-2">99</td>
@@ -15,7 +15,7 @@
             </tr>
         </data-table>
 
-        <modal :input-fields="modalInputs" :current-page="dataList.current_page"/>
+        <modal :input-fields="modalInputs" :def-form-data="{status: 1}"/>
     </div>
 
 </template>
@@ -30,6 +30,11 @@
 
         data() {
             return {
+                tableHeaders: [
+                    this.tableHeader({}),
+                    this.tableHeader({name: 'items'}),
+                    this.tableHeader({name: 'status', cls: 'px-6 py-3 text-center'}),
+                ],
                 modalInputs: [
                     this.modalInput({name: 'name', type: 'text', required: true, placeholder: 'Industry name'}),
                     this.modalInput({
@@ -47,7 +52,7 @@
         },
 
         mounted() {
-            this.fetchData(this.generateUrl(false, false, {page: 1}));
+            this.fetchData();
         },
 
         methods: {

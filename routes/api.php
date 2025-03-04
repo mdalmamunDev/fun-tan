@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\IndustryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,4 @@ Route::resource('tests', IndustryController::class);
 
 
 Route::resource('industries', IndustryController::class);
-Route::resource('genres', IndustryController::class);
+Route::resource('genres', GenreController::class);

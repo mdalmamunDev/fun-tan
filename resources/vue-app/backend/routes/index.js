@@ -25,7 +25,7 @@ const route = [
     {
         path : '/admin/genres',
         component : GenresView,
-        meta : {'pageTitle' : 'Genres'},
+        meta : {'pageTitle' : 'Genres', dataUrl: 'api/genres'},
     },
     {
         path : '/admin/tags',

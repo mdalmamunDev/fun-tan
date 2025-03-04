@@ -24,11 +24,17 @@ class IndustryController extends Controller
             return $this->retNoPermRes(PERM_VIEW);
 
         try {
-            $name = request()->input('name');
+            $name = \request('name');
+            $sort_by = \request('sort_by');
             $data = $this->model
                 ->when($name, function ($query) use ($name) {
                     $query->where('name', 'Like', "%$name%");
-                })->paginate(15);
+                })
+                ->when($sort_by, function ($query) use ($sort_by) {
+                    if ($sort_by !== 'items')
+                        $query->orderBy($sort_by, \request('sort_order'));
+                })
+                ->paginate(\request('per_page'));
 
             return retRes(2000, $data);
         } catch (Exception $e) {

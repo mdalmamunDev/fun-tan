@@ -1,6 +1,15 @@
 <template>
     <div class="sm:flex gap-4 justify-between items-center rounded mb-6 p-3 py-2 bg-gradient-to-r from-red-900 to-gray-400">
-        <h2 class="text-3xl font-semibold">{{ $route.meta.pageTitle }}</h2>
+        <div class="flex items-center">
+            <h2 class="text-3xl font-semibold pe-1 border-r-4">{{ $route.meta.pageTitle }}</h2>
+            <div class="ms-1">
+                <select v-model="filterData.per_page" @change="fetchData" class="bg-gray-700 py-1.5 rounded hover:bg-gray-600 focus:outline-none text-center">
+                    <template v-for="i in perPageArr">
+                        <option :value="i">{{ i }}</option>
+                    </template>
+                </select>
+            </div>
+        </div>
         <div class="flex gap-4">
             <div class="flex flex-wrap gap-4 justify-end text-xs">
                 <!-- Name -->
@@ -33,6 +42,10 @@
         props: {
             showAddBtn: Boolean,
         },
+        mounted() {
+            // reset filters
+            this.$store.commit('setFilterData', {per_page: 15});
+        }
     }
 </script>
 

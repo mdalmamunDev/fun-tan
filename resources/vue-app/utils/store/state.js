@@ -2,6 +2,7 @@ export const state = {
     auth: {},
     dataList: {},
     formData: {},
+    filterData: {},
     Config: [],
     settings: {},
     showHeader: 1,

@@ -21,6 +21,7 @@ export default {
             CODE_SUCCESS: 2000,
             CODE_WARNING: 2020,
             CODE_DANGER: 3000,
+            perPageArr: [5, 10, 15, 20, 30, 50, 100, 200],
         }
     },
     computed: {
@@ -29,6 +30,9 @@ export default {
         },
         formData() {
             return this.$store.getters.formData;
+        },
+        filterData() {
+            return this.$store.getters.filterData;
         },
         showModal() {
             return this.$store.getters.showModal;
@@ -41,12 +45,15 @@ export default {
         openModal() {
             this.$store.commit('setShowModal', true);
         },
-        closeModal() {
+        closeModal(defFormData = {}) {
             this.$store.commit('setShowModal', false);
-            this.$store.commit('setFormData', {});
+            this.$store.commit('setFormData', defFormData);
         },
         modalInput({name = 'name', type = 'text', required = false, defaultValue = '', options = [], placeholder = '', colSpan = 2} = {}) {
             return {name, type, required, defaultValue, options, placeholder, colSpan};
+        },
+        tableHeader({name = 'name', sortable = true, changeSort = this.changeSort, cls = 'px-6 py-3'} = {}) {
+            return {name, sortable, cls, changeSort};
         },
         getFromObjArr(objArr, key, value) {
             return objArr.find(obj => obj[key] === value) || null;

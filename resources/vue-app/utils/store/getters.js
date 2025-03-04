@@ -8,6 +8,9 @@ export const getters = {
     formData(state) {
         return state.formData;
     },
+    filterData(state) {
+        return state.filterData;
+    },
     Config(state) {
         return state.Config;
     },

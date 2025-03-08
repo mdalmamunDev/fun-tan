@@ -1,5 +1,5 @@
 <template>
-    <div class="sm:flex gap-4 justify-between items-center rounded mb-6 p-3 py-2 bg-gradient-to-r from-red-900 to-gray-400">
+    <div class="sm:flex gap-4 justify-between items-center rounded mb-6 p-3 py-2 bg-gradient-to-r from-red-200 to-gray-400 dark:from-red-900">
         <div class="flex items-center">
             <h2 class="text-3xl font-semibold pe-1 border-r-4">{{ $route.meta.pageTitle }}</h2>
             <div class="ms-1">

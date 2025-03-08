@@ -7,7 +7,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
         <link rel="stylesheet" href="{{ asset('vue-app/css/tailwind.css') }}">
     </head>
-    <body class="bg-gray-900 text-white">
+    <body class="dark:bg-gray-900 dark:text-white">
         <div id="app">
             <App />
         </div>

@@ -10,9 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-gray-900 text-white max-w-screen-2xl mx-auto">
+<body class="dark:bg-gray-900 dark:text-white">
 @include('frontend.layouts.header')
-<div class="mt-16">
+<div class="mt-16 max-w-screen-2xl mx-auto">
    @yield('content')
 </div>
 

@@ -27,7 +27,7 @@
         @endphp
 
         @foreach($reasons as $reason)
-            <div class="reason-card h-full p-6 rounded-lg shadow-lg relative">
+            <div class="reason-card h-full p-6 rounded-lg shadow-lg relative text-white">
                 <h2 class="text-xl font-semibold mb-2">{{ $reason['name'] }}</h2>
                 <p class="text-gray-300 mb-20">{{ $reason['details'] }}</p>
                 <div class="absolute bottom-4 right-4 text-purple-400">

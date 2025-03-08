@@ -9,16 +9,16 @@
                 <div class="flex flex-wrap gap-4 items-center sm:justify-end">
                     <!-- Type -->
                     <div class="flex flex-col">
-                        <label for="typeSelect" class="text-sm font-medium text-gray-300 mb-1">Type:</label>
-                        <select v-model="filters.type" id="typeSelect" class="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600 focus:outline-none">
+                        <label for="typeSelect" class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Type:</label>
+                        <select v-model="filters.type" id="typeSelect" class="bg-red-50 dark:bg-gray-700 px-4 py-2 rounded hover:bg-red-100 dark:hover:bg-gray-600 focus:outline-none">
                             <option :value="undefined">All</option>
                             <option v-for="type in types" :value="type.value">{{ type.name }}</option>
                         </select>
                     </div>
                     <!-- Category -->
                     <div class="flex flex-col">
-                        <label for="categorySort" class="text-sm font-medium text-gray-300 mb-1">Industry:</label>
-                        <select v-model="filters.category" id="categorySort" class="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600 focus:outline-none">
+                        <label for="categorySort" class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Industry:</label>
+                        <select v-model="filters.category" id="categorySort" class="bg-red-50 dark:bg-gray-700 px-4 py-2 rounded hover:bg-red-100 dark:hover:bg-gray-600 focus:outline-none">
                             <option :value="undefined">All</option>
                             <option value="bollywood">Bollywood</option>
                             <option value="hollywood">Hollywood</option>
@@ -27,8 +27,8 @@
                     </div>
                     <!-- Genre -->
                     <div class="flex flex-col">
-                        <label for="genreSort" class="text-sm font-medium text-gray-300 mb-1">Genre:</label>
-                        <select v-model="filters.genre" id="genreSort" class="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600 focus:outline-none">
+                        <label for="genreSort" class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Genre:</label>
+                        <select v-model="filters.genre" id="genreSort" class="bg-red-50 dark:bg-gray-700 px-4 py-2 rounded hover:bg-red-100 dark:hover:bg-gray-600 focus:outline-none">
                             <option :value="undefined">All</option>
                             <option value="sci-fi">Sci-Fi</option>
                             <option value="romance">Romance</option>
@@ -39,8 +39,8 @@
                     </div>
                     <!-- Sort By -->
                     <div class="flex flex-col">
-                        <label for="sortBy" class="text-sm font-medium text-gray-300 mb-1">Sort By:</label>
-                        <select v-model="filters.sort" id="sortBy" class="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600 focus:outline-none">
+                        <label for="sortBy" class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Sort By:</label>
+                        <select v-model="filters.sort" id="sortBy" class="bg-red-50 dark:bg-gray-700 px-4 py-2 rounded hover:bg-red-100 dark:hover:bg-gray-600 focus:outline-none">
                             <option :value="undefined">All</option>
                             <option v-for="sort in sorts" :value="sort.value">{{ sort.name }}</option>
                         </select>
@@ -53,7 +53,7 @@
             <div v-if="isEmptyData(items)" role="status" class="h-[60vh] flex flex-col items-center justify-center">
                 <span class="text-2xl">No Data To Show :(</span>
             </div>
-            <div v-else class="grid grid-cols-[repeat(auto-fill,minmax(170px,1fr))] gap-4 gap-x-6">
+            <div v-else class="grid grid-cols-[repeat(auto-fill,minmax(170px,1fr))] gap-4 gap-x-6 text-white">
                 <div v-for="movie in items" :key="movie.id" class="relative w-48 h-64 mx-auto bg-cover bg-center rounded-md hover:scale-105 transform transition cursor-pointer" :style="{ backgroundImage: `url(${movie.imageUrl})` }">
                     <div class="p-2 w-48">
                         <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 rounded-md"></div>
@@ -95,18 +95,18 @@ export default {
         return {
             filters: this.$route.query,
             items: [
-                { id: 1, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 2, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 3, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 4, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 15, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 16, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 17, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 18, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 19, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 20, title: 'Movie Title 2', category: 'hollywood', genre: 'romance', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 30, title: 'Movie Title 3', category: 'tollywood', genre: 'comedy', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
-                { id: 44, title: 'Movie Title 4', category: 'bollywood', genre: 'drama', imageUrl: 'https://via.placeholder.com/200x300?text=Movie' },
+                { id: 1, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 2, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 3, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 4, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 15, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 16, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 17, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 18, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 19, title: 'Movie Title 1', category: 'bollywood', genre: 'action', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 20, title: 'Movie Title 2', category: 'hollywood', genre: 'romance', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 30, title: 'Movie Title 3', category: 'tollywood', genre: 'comedy', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
+                { id: 44, title: 'Movie Title 4', category: 'bollywood', genre: 'drama', imageUrl: 'https://webneel.com/daily/sites/default/files/images/daily/09-2019/2-movie-poster-design-aladdin-disney-glossy-composite.jpg' },
                 // Add more movie objects here
             ],
         };

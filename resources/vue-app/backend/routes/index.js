@@ -2,6 +2,7 @@ import DashboardView from "../views/DashboardView";
 import ItemsView from "../views/ItemsView";
 import IndustriesView from "../views/IndustriesView";
 import GenresView from "../views/GenresView";
+import TagsView from "../views/TagsView";
 
 
 const route = [
@@ -29,8 +30,8 @@ const route = [
     },
     {
         path : '/admin/tags',
-        component : IndustriesView,
-        meta : {'pageTitle' : 'Tags'},
+        component : TagsView,
+        meta : {'pageTitle' : 'Tags', dataUrl: 'api/tags'},
     },
 ];
 export default route;

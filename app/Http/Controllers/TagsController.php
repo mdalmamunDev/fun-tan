@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre;
-use App\Supports\Helper;
+use App\Models\Tag;
 use Exception;
+use App\Supports\Helper;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
-class GenreController extends Controller
+class TagsController extends Controller
 {
     use Helper;
 
     public function __construct()
     {
-        $this->model = new Genre();
+        $this->model = new Tag();
     }
 
 
@@ -24,11 +24,17 @@ class GenreController extends Controller
             return $this->retNoPermRes(PERM_VIEW);
 
         try {
-            $name = request()->input('name');
+            $name = \request('name');
+            $sort_by = \request('sort_by');
             $data = $this->model
                 ->when($name, function ($query) use ($name) {
                     $query->where('name', 'Like', "%$name%");
-                })->paginate(\request('per_page'));
+                })
+                ->when($sort_by, function ($query) use ($sort_by) {
+                    if ($sort_by !== 'items')
+                        $query->orderBy($sort_by, \request('sort_order'));
+                })
+                ->paginate(\request('per_page'));
 
             return retRes(2000, $data);
         } catch (Exception $e) {
@@ -100,4 +106,5 @@ class GenreController extends Controller
             return retRes('Failed to delete record', null, 500);
         }
     }
+
 }

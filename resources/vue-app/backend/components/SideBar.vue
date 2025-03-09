@@ -51,7 +51,7 @@
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/admin/industries" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <router-link to="/admin/tags" class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <div class="text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
                             <i class="fa-solid fa-tags"></i>
                         </div>

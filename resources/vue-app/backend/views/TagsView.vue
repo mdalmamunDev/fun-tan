@@ -25,7 +25,7 @@
     import Modal from "../components/Modal";
     import DataTable from "../components/DataTable";
     export default {
-        name: "GenresView",
+        name: "TagsView",
         components: {DataTable, Modal, PageTop},
 
         data() {
@@ -36,7 +36,7 @@
                     this.tableHeader({name: 'status', cls: 'px-6 py-3 text-center'}),
                 ],
                 modalInputs: [
-                    this.modalInput({name: 'name', type: 'text', required: true, placeholder: 'Genre name'}),
+                    this.modalInput({name: 'name', type: 'text', required: true, placeholder: 'Industry name'}),
                     this.modalInput({
                         name: 'status',
                         type: 'select',

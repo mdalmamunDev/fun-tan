@@ -1,5 +1,8 @@
 # Query Parameter Documentation
 
+## Screen Shots
+<img src="public/md/s1.png" alt="Screenshot" width="">
+
 ## Overview
 The `type` query parameter is used to categorize media content within the application. Each `type` value corresponds to a specific category.
 

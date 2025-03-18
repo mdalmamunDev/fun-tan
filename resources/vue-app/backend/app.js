@@ -22,14 +22,14 @@ const router = new VueRouter({
     linkActiveClass : 'active'
 });
 
-Vue.mixin(commonMixin);
-Vue.mixin(httpMixin);
-
 // toast
 Vue.use(Toast, {
     timeout: 3000,
     position: "bottom-right"
 });
+
+Vue.mixin(commonMixin);
+Vue.mixin(httpMixin);
 
 new Vue({
     el: '#app',

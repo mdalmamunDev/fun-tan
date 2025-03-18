@@ -4,10 +4,11 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th v-for="h in headers" :class="h.cls" scope="col">
-                    <span @click="h.changeSort(h.name)" :class="h.sortable ? ' cursor-pointer hover:text-gray-100 transition-colors duration-300': ''">
+                    <span v-if="h.sortable" @click="h.changeSort(h.name)" class="cursor-pointer hover:text-gray-100 transition-colors duration-300">
                         {{ h.name }}
-                        <i v-if="h.sortable" class="fa-solid fa-sort ml-1"></i>
+                        <i class="fa-solid fa-sort ml-1"></i>
                     </span>
+                    <span v-else>{{ h.name }}</span>
                 </th>
                 <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Action</span>

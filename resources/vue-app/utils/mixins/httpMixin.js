@@ -94,13 +94,11 @@ export default {
                 _this.httpReq({
                     urlSuffix: id,
                     method: 'delete',
-                    callback: (response) => {
-                        if (response.data) {
-                            // Show success toast notification
-                            this.$toast(response.data.message, {type: 'success',});
-                            // Refetch the updated data
-                            _this.fetchData(_this.generateUrl(false, false, { ...{ page: currentPage }, ...params }));
-                        }
+                    callback: () => {
+                        // Refetch the updated data
+                        _this.fetchData({
+                            params:  { ...{ page: currentPage }, ...params }
+                        });
                     },
                 });
             });
@@ -122,13 +120,21 @@ export default {
                 data: data ? data : (this.$store ? this.$store.getters.formData : {})      // The data to be sent with the request (for POST/PUT)
             })
                 .then(function (response) {
-                    if (typeof callback === 'function') {
-                        callback(response);  // Execute the callback with the response
+                    const { result = {}, status, message } = response.data ? response.data : {};
+                    if (typeof callback === 'function') callback(result, response);  // Execute the callback with the response
+                    // show toast
+                    if (message) {
+                        switch (status) {
+                            case 2000: _this.$toast.success(message); break;
+                            case 2020: _this.$toast.warning(message); break;
+                            default: _this.$toast.error(message);
+                        }
+
                     }
+
                 })
                 .catch(function (error) {
-                    // Handle the error here, for example by showing a toast notification
-                    // toastr.error(error.message, 'Error!', {positionClass: 'toast-top-center'});
+                    _this.$toast.error(error.message);
                 });
         },
 

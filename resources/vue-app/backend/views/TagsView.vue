@@ -6,7 +6,9 @@
             <tr v-for="(item, index) in dataList.data" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ item.name }}</th>
                 <td class="px-6 py-2">99</td>
-                <td class="px-6 py-2 text-center" v-html="showStatus({val: item.status})"></td>
+                <td class="px-6 py-2 text-center">
+                    <status-button :id="item.id" :status="item.status"/>
+                </td>
                 <td class="px-6 py-2 text-right">
                     <button v-if="can('industry_edit')" @click="onClickUpdate(item)" class="font-medium text-yellow-600 dark:text-yellow-500 hover:underline">Edit</button>
                     <span>|</span>
@@ -15,7 +17,21 @@
             </tr>
         </data-table>
 
-        <modal :input-fields="modalInputs" :def-form-data="{status: 1}"/>
+        <modal>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Name:
+                    <input v-model="formData.name" type="text" placeholder="Industry Name" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                </label>
+            </div>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Status:
+                    <select v-model="formData.status" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option :value="0">In Active</option>
+                        <option :value="1">Active</option>
+                    </select>
+                </label>
+            </div>
+        </modal>
     </div>
 
 </template>
@@ -24,9 +40,10 @@
     import PageTop from "../components/PageTop";
     import Modal from "../components/Modal";
     import DataTable from "../components/DataTable";
+    import StatusButton from "../components/StatusButton";
     export default {
         name: "TagsView",
-        components: {DataTable, Modal, PageTop},
+        components: {StatusButton, DataTable, Modal, PageTop},
 
         data() {
             return {
@@ -34,19 +51,6 @@
                     this.tableHeader({}),
                     this.tableHeader({name: 'items'}),
                     this.tableHeader({name: 'status', cls: 'px-6 py-3 text-center'}),
-                ],
-                modalInputs: [
-                    this.modalInput({name: 'name', type: 'text', required: true, placeholder: 'Industry name'}),
-                    this.modalInput({
-                        name: 'status',
-                        type: 'select',
-                        required: true,
-                        defaultValue: 1,
-                        options : [
-                            {name: 'In Active', value: 0},
-                            {name: 'Active', value: 1},
-                        ]
-                    }),
                 ],
             };
         },

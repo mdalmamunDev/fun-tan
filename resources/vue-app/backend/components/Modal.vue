@@ -1,6 +1,6 @@
 <template>
     <div v-if="showModal" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-        <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative m-4 w-full max-h-full overflow-auto" :class="`max-w-${width}`">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
@@ -17,42 +17,7 @@
                 </div>
                 <!-- Modal body -->
                 <form class="p-4 md:p-5" @submit.prevent="handleSubmit">
-                    <div :class="`grid gap-4 mb-8 grid-cols-2`">
-                        <div v-for="field in inputFields" :class="`col-span-${field.colSpan}`">
-                            <label :for="field.name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">{{ field.name }}</label>
-                            <select
-                                    v-if="field.type === 'select'"
-                                    v-model="formData[field.name]"
-                                    :name="field.name"
-                                    :id="field.name"
-                                    :required="field.required"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            >
-                                <option v-for="opt in field.options" :value="opt.value">{{ opt.name }}</option>
-                            </select>
-                            <input
-                                    v-else
-                                    v-model="formData[field.name]"
-                                    :type="field.type"
-                                    :name="field.name"
-                                    :id="field.name"
-                                    :placeholder="field.placeholder"
-                                    :required="field.required"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            >
-                        </div>
-<!--                        <div class="col-span-2">-->
-<!--                            <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>-->
-<!--                            <select v-model="formData.status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">-->
-<!--                                <option :value="1">Active</option>-->
-<!--                                <option :value="0">In Active</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                        <div class="col-span-2">-->
-<!--                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Description</label>-->
-<!--                            <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></textarea>-->
-<!--                        </div>-->
-                    </div>
+                    <slot />
                     <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
                         Submit
                     </button>
@@ -67,23 +32,19 @@
         name: "Modal",
 
         props: {
-            inputFields: {
-                type: Array,
-                default: [],
-            },
             defFormData: {
                 type: Object,
-                default: () => {}
-            }
+                default: () => ({status: 1})
+            },
+            width: {
+                type: String,
+                default: 'md'
+            },
         },
 
         mounted() {
             // set defaults
-            for (const field of this.inputFields) {
-                if (field.defaultValue) {
-                    this.formData[field.name] = field.defaultValue;
-                }
-            }
+            this.$store.commit('setFormData', this.defFormData);
         },
 
         methods: {
@@ -95,12 +56,8 @@
                 this.httpReq({
                     urlSuffix: urlSuffix,
                     method: method,
-                    callback: (response) => {
-                        if (response.data) {
-                            // Show success toast notification instead of alert
-                            // _this.showToast(response.data.message, response.data.status === _this.CODE_SUCCESS ? 'success' : 'error');
-                            _this.fetchData({params: {page: _this.dataList.current_page}});
-                        }
+                    callback: () => {
+                        _this.fetchData({params: {page: _this.dataList.current_page}});
                     }
                 });
 

@@ -1,7 +1,7 @@
 <template>
     <div v-if="showModal" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-        <div class="relative m-4 w-full max-h-full overflow-auto" :class="`max-w-${width}`">
-            <!-- Modal content -->
+        <div :class="['relative m-4 max-h-full overflow-auto w-full', extraClass]">
+        <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -36,9 +36,9 @@
                 type: Object,
                 default: () => ({status: 1})
             },
-            width: {
+            extraClass: {
                 type: String,
-                default: 'md'
+                default: 'max-w-md'
             },
         },
 

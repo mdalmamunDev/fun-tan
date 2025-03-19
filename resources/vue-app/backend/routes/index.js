@@ -3,6 +3,7 @@ import ItemsView from "../views/ItemsView";
 import IndustriesView from "../views/IndustriesView";
 import GenresView from "../views/GenresView";
 import TagsView from "../views/TagsView";
+import ItemsFormView from "../views/ItemsFormView";
 
 
 const route = [
@@ -17,6 +18,12 @@ const route = [
         name : 'items',
         component : ItemsView,
         meta : {'pageTitle' : 'Items'},
+    },
+    {
+        path : '/admin/items/form/:id?',
+        name : 'items',
+        component : ItemsFormView,
+        meta : {'pageTitle' : 'Item Form'},
     },
     {
         path : '/admin/industries',

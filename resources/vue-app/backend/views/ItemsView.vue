@@ -1,6 +1,6 @@
 <template>
     <div>
-        <page-top :show-pagination="false" :show-add-btn="can('item_add')">
+        <page-top :show-pagination="false" :show-add-btn="can('item_add')" form-url="form">
             <div class="flex flex-col">
                 <label for="filterType" class="text-xs font-medium text-gray-300">Type:</label>
                 <select id="filterType" class="bg-gray-700 px-2 py-1 rounded hover:bg-gray-600 focus:outline-none">
@@ -80,68 +80,6 @@
                 </div>
             </div>
         </div>
-
-        <modal width="4xl">
-            <div class="grid md:grid-cols-2 gap-x-4">
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Name:
-                        <input v-model="formData.name" type="text" placeholder="Item Name" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </label>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Industry:
-                        <select v-model="formData.status" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option :value="0">In Active</option>
-                            <option :value="1">Active</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="mb-6 md:col-span-2">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Description:
-                        <textarea v-model="formData.name" rows="4" placeholder="Item Description" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
-                    </label>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Genre:
-                        <select v-model="formData.status" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option :value="0">In Active</option>
-                            <option :value="1">Active</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Tag:
-                        <select v-model="formData.status" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option :value="0">In Active</option>
-                            <option :value="1">Active</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Rating:
-                        <input v-model="formData.name" type="number" step="0.1" placeholder="Item Name" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </label>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Status:
-                        <select v-model="formData.status" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option :value="0">In Active</option>
-                            <option :value="1">Active</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Thumbnail:
-                        <input type="file" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </label>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">File/Content:
-                        <input type="file" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </label>
-                </div>
-            </div>
-        </modal>
     </div>
 
 </template>
@@ -149,10 +87,9 @@
 <script>
     import PageTop from "../components/PageTop";
     import StatusButton from "../components/StatusButton";
-    import Modal from "../components/Modal";
     export default {
         name: "ItemsView",
-        components: {Modal, StatusButton, PageTop},
+        components: {StatusButton, PageTop},
 
         data() {
             return {

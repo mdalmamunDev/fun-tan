@@ -10,6 +10,7 @@ export default {
                 { name: 'Web Series', value: 3 },
                 { name: 'Short Film', value: 4 },
                 { name: 'Animation', value: 5 },
+                { name: 'Single Ep.', value: 6 },
             ],
             sorts: [
                 { name: 'Name', value: 1 },

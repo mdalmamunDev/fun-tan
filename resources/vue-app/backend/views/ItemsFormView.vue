@@ -15,16 +15,27 @@
                     </select>
                 </label>
             </div>
-            <div v-if="formData.type === 6" class="mb-6">
-                <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Parent:
-                    <select v-model="formData.parent_id" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option :value="undefined">Select a parent content</option>
-                        <template v-for="type in types">
-                            <option :value="type.value">{{ type.name }}</option>
-                        </template>
-                    </select>
-                </label>
-            </div>
+            <template v-if="formData.type === 6">
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Parent Type:
+                        <select v-model="formData.parent_type" @change="formData.parent_id = undefined" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <template v-for="type in [types[1],types[2]]">
+                                <option :value="type.value" :key="type.value">{{ type.name }}</option>
+                            </template>
+                        </select>
+                    </label>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Parent:
+                        <select v-model="formData.parent_id" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option :value="undefined">Select a parent content</option>
+                            <template v-for="item in requiredData.items">
+                                <option :value="item.value">{{ item.name }}</option>
+                            </template>
+                        </select>
+                    </label>
+                </div>
+            </template>
             <div class="mb-6">
                 <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Name:
                     <input v-model="formData.name" type="text" placeholder="Item Name" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -32,31 +43,31 @@
             </div>
             <div class="mb-6 md:col-span-2">
                 <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Description:
-                    <textarea v-model="formData.name" rows="4" placeholder="Item Description" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
+                    <textarea v-model="formData.description" rows="4" placeholder="Item Description" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"></textarea>
                 </label>
             </div>
             <template v-if="formData.type !== 6">
                 <div class="mb-6">
                     <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Industry:
-                        <select v-model="formData.status" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option :value="0">In Active</option>
-                            <option :value="1">Active</option>
+                        <select v-model="formData.industry_id" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option :value="undefined">Select a industry</option>
+                            <option v-for="data in requiredData.industries" :value="data.id" :key="data.id">{{ data.name }}</option>
                         </select>
                     </label>
                 </div>
                 <div class="mb-6">
                     <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Genre:
-                        <select v-model="formData.status" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option :value="0">In Active</option>
-                            <option :value="1">Active</option>
+                        <select v-model="formData.genre_id" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option :value="undefined">Select a genre</option>
+                            <option v-for="data in requiredData.genres" :value="data.id" :key="data.id">{{ data.name }}</option>
                         </select>
                     </label>
                 </div>
                 <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Tag:
-                        <select v-model="formData.status" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">Tags: {{ formData.tags }}
+                        <select v-model="crrTag" @change="peekTag" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option :value="0">In Active</option>
-                            <option :value="1">Active</option>
+                            <option v-for="data in requiredData.tags" :value="data" :key="data.id">{{ data.name }}</option>
                         </select>
                     </label>
                 </div>
@@ -84,7 +95,7 @@
                     <input type="file" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                 </label>
             </div>
-            <div class="mb-6">
+            <div v-if="![2,3].includes(formData.type)" class="mb-6">
                 <label class="block text-sm font-medium text-gray-900 dark:text-white capitalize">File/Content:
                     <input type="file" required class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                 </label>
@@ -147,6 +158,9 @@
         <pre>
             {{formData}}
         </pre>
+        <pre>
+            {{requiredData}}
+        </pre>
     </div>
 </template>
 
@@ -157,7 +171,7 @@
         components: {BackButton},
         data() {
             return {
-                //
+                crrTag: null,
             };
         },
         computed: {
@@ -165,12 +179,25 @@
                 return this.$route.params.id || null; // Handle the case where `id` is missing
             }
         },
+        watch: {
+            //
+        },
         mounted() {
             this.$store.commit('setFormData', {
                 type: 1,
                 child: [],
+                tags: [],
+                parent_type: 2,
             });
-        }
+
+            this.getRequiredData(['industries', 'genres', 'tags']);
+        },
+        methods: {
+            peekTag() {
+                if (this.crrTag)
+                    this.formData.tags.push(this.crrTag.id);
+            }
+        },
     }
 </script>
 

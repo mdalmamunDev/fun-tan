@@ -12,15 +12,15 @@
 
 <style scoped>
     .button {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         border: none;
         font-weight: 600;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0px 0px 0px 4px rgba(255, 172, 163, 0.25);
+        box-shadow: 0 0 0 4px rgba(255, 172, 163, 0.25);
         cursor: pointer;
         transition-duration: 0.3s;
         overflow: hidden;

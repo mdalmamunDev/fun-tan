@@ -27,5 +27,8 @@ export const mutations = {
     },
     setShowModal(state, data) {
         state.showModal = data;
+    },
+    setRequiredData(state, data) {
+        state.requiredData = data;
     }
 };

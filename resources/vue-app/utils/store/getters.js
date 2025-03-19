@@ -26,4 +26,7 @@ export const getters = {
     showModal(state) {
         return state.showModal;
     },
+    requiredData(state) {
+        return state.requiredData;
+    },
 };

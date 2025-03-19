@@ -8,4 +8,5 @@ export const state = {
     showHeader: 1,
     showFooter: 1,
     showModal: false,
+    requiredData: {},
 };

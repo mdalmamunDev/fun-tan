@@ -70,6 +70,31 @@ export default {
                 });
         },
 
+        getRequiredData: function (array, callback = false) {
+            const _this = this;
+            Axios({
+                method: 'post',
+                url: _this.generateUrl('api/required_data'),
+                data: array
+            })
+                .then(function (response) {
+                    if (response.data) {
+                        const result = response.data.result;
+
+                        if (typeof callback === 'function') callback(result);
+
+                        if (result) {
+                            Object.entries(result).forEach(([key, value]) => {
+                                _this.$set(_this.requiredData, key, value);
+                            })
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    _this.$toast.error(error.message);
+                });
+        },
+
         onClickUpdate(item) {
             let copy = Object.assign({}, item); // to avoid reference
             this.$store.commit('setFormData', copy);

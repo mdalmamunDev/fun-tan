@@ -41,6 +41,9 @@ export default {
         // Config() {
         //     return this.getConfig()
         // }
+        requiredData() {
+            return this.$store.getters.requiredData;
+        }
     },
     methods: {
         openModal() {
